@@ -74,6 +74,19 @@ header {
                 }
             }
         }
+        &-buttons {
+            & .fa-align-justify::before {
+                color: $navbar-main-text-color;
+                transition: all 0.2s;
+            }
+
+        }
+        &-toggle:hover {
+            & .fa-align-justify::before {
+                color: #ffffff;
+            }
+
+        }
     }
 }
 
@@ -139,6 +152,11 @@ div#navigation.navbar-collapse.collapse ul.nav.navbar-nav.navbar-right li.dropdo
     a {
         color: $navbar-main-text-color;
     }
+    &s {
+        a {
+            color: $navbar-main-text-color;
+        } 
+    }
 }
 
 // overrides theme setting: was -15px
@@ -182,9 +200,21 @@ nav > li > a {
     .topbar-socials {
         display: inline-block;
     }
-    .navbar-buttons {
+    .navbar {
+        &-collapse {
+            & .dropdown {
+                &-menu {
+                    left: 0;
+                    right: auto;
+                    width: 100%;
+                    // background-color: #fff;
+                }
+            }
+        }
+        &-buttons {
         display: flex;
         align-items: center;
+        }
     }
 }
 
