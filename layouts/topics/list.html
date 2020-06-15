@@ -22,17 +22,13 @@
 
 {{ define "content" }}
 
-<div class="container">
-        <br/>
-        <div class="t_rw">
-            Here the topics current mapped to User, Working and Trainign sessions:
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-0"></div>
-        <div class="col-xs-12">
-
-            <div _class="topic-cards">
+<section class="topic-section">
+    <div class="container-xl">
+            <br/>
+            <div class="t_rw">
+                Here the topics current mapped to User, Working and Trainign sessions:
+            </div>
+            <div class="topic-cards">
                 <ul class="tags">
                     {{ range $index, $value:= (sort .Site.Taxonomies.topics.TaxonomyArray "Name") }}
                         <a id="{{urlize $value.Name }}"><br></a>
@@ -40,15 +36,19 @@
                         <br>        <!-- without this the link to this page will scroll past the title -->
                         <br>
                         <br>
-                        <h2>{{ upper (humanize $value.Name) }}</h2>
-                        {{ partial "sessions/simple-table-show-all.html" $value.Pages }}
-
+    
+                        <div class="table">
+                            <h2>{{ upper (humanize $value.Name) }}</h2>
+                            {{ partial "sessions/topic-body.html" $value.Pages }}
+                        </div>
+    
                     {{ end }}
-
+    
                 </ul>
             </div>
-        </div>
     </div>
+</section>
+
 
 
 

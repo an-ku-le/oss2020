@@ -1,0 +1,46 @@
+<div class="sessions">
+        <div class="table-head">
+            <div class="head-type">Title</div>
+            <div class="head-type">Session Type</div>
+            <div class="head-type">Day</div>
+            <div class="head-type">When</div>
+            <div class="head-type">Delivered By</div>
+            <div class="head-type">Track</div>
+            <div class="head-type">Register</div>
+        </div>
+        <div class="table-body">
+            {{ range . }}
+            <div class="table-item">
+                <div>
+                    <div class="head-type-mobile">Title:</div>
+                    <a href="{{.Permalink }}">{{.Params.title}}</a>
+                </div>
+                <div>
+                    <div class="head-type-mobile">Session Type:</div>
+                    {{.Params.type}}
+                </div>
+                <div>
+                    <div class="head-type-mobile">Day:</div>
+                    {{.Params.when_day}}
+                </div>
+                <div>
+                    <div class="head-type-mobile">When:</div>
+                </div>
+                <div>
+                    <div class="head-type-mobile">Delivered By:</div>
+                    {{ partial "utils/titles-with-link.html" (dict "this" . "name" .Params.title "value" .Params.organizers)   }}
+                </div>
+                <div>
+                    <div class="head-type-mobile">Track:</div>
+                    {{ partial "utils/track-to-link.html" (dict "this" . "track" .Params.track)  }}
+                </div>
+                <div>
+                    <div class="head-type-mobile">Register:</div>
+                    {{if  .Params.hey_summit -}}
+                        <a href="{{.Params.hey_summit}}">Book now</a>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end}}
+        </div>
+</div>
